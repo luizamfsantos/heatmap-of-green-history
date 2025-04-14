@@ -1,7 +1,8 @@
+import os
+
+from dotenv import load_dotenv
 from gql import Client, gql
 from gql.transport.requests import RequestsHTTPTransport
-from dotenv import load_dotenv
-import os
 
 load_dotenv()
 
