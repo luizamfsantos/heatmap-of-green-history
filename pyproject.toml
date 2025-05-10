@@ -25,6 +25,7 @@ dependencies = [
     "multidict==6.4.3",
     "numpy==2.2.4",
     "pandas==2.2.3",
+    "pre-commit>=4.2.0",
     "propcache==0.3.1",
     "python-dateutil==2.9.0.post0",
     "python-dotenv==1.1.0",

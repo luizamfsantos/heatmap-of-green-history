@@ -6,9 +6,9 @@ from gql.transport.requests import RequestsHTTPTransport
 
 load_dotenv()
 
-username = os.environ.get('EMAIL')
-pwd = os.environ.get('PASSWORD')
-assert username and pwd, 'Missing credentials. Check .env file.'
+username = os.environ.get("EMAIL")
+pwd = os.environ.get("PASSWORD")
+assert username and pwd, "Missing credentials. Check .env file."
 
 endpoint = "https://plataforma.alerta.mapbiomas.org/api/v2/graphql"
 transport = RequestsHTTPTransport(
@@ -17,8 +17,7 @@ transport = RequestsHTTPTransport(
     retries=3,
 )
 
-client = Client(
-    transport=transport, fetch_schema_from_transport=True)
+client = Client(transport=transport, fetch_schema_from_transport=True)
 
 login_query = gql(
     """
@@ -41,12 +40,12 @@ login_variables = {
 }
 
 result = client.execute(login_query, variable_values=login_variables)
-assert 'signIn' in result, 'Error logging in'
-token = result['signIn'].get('token')
+assert "signIn" in result, "Error logging in"
+token = result["signIn"].get("token")
 
 
 alerts_query = gql(
-    """ 
+    """
 query alerts(
   $alertCodes: [ID!],
   $carCodes: [ID!],
@@ -137,7 +136,7 @@ alerts_variables = {
     "actionTypesIds": [""],
     "boundingBox": [""],
     "sortField": "DETECTED_AT",
-    "sortDirection": "DESC"
+    "sortDirection": "DESC",
 }
 
 authorized_transport = RequestsHTTPTransport(
@@ -152,4 +151,5 @@ authorized_client = Client(
 )
 
 alerts_result = authorized_client.execute(
-    alerts_query, variable_values=alerts_variables)
+    alerts_query, variable_values=alerts_variables
+)
